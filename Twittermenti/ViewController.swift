@@ -1,4 +1,10 @@
-
+//
+//  ViewController.swift
+//  Twittermenti
+//
+//  Created by Angela Yu on 17/07/2019.
+//  Copyright © 2019 London App Brewery. All rights reserved.
+//
 
 import UIKit
 import SwifteriOS
@@ -15,18 +21,33 @@ class ViewController: UIViewController {
     let swifter = Swifter(consumerKey: "PKxwEOVcLO89YkGUjWpzJR7ff", consumerSecret: "JZehglHEkRUQ8Kb7gDnoeoYhIyoiHpKJPols5ZqUM622JkFJ9T")
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        sentimentLabel.font = UIFont.systemFont(ofSize: 20, weight: .thin)
+        sentimentLabel.text = "Let's Predict The Future"
+        textField.delegate = self
     }
     
     @IBAction func predictPressed(_ sender: Any) {
-        fetchTweets()
+        if textField.text == ""{
+            let alert = UIAlertController(title: "Please Enter Tweet", message: "Empty Fields are quite Unpredictable :)", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Retry", style: .default, handler: nil)
+            alert.addAction(action)
+            self.present(alert, animated: true, completion: nil)
+        }else{
+            sentimentLabel.text = ""
+            sentimentLabel.font = UIFont.systemFont(ofSize: 100)
+            fetchTweets()
+
+        }
     }
     func fetchTweets(){
         
-        
         if let label=textField.text{
-            
+            let vc = LoaderViewController()
+            guard let loaderView = vc.view else{
+                fatalError("Unable to Fetch View")
+            }
+            view.addSubview(loaderView)
+            vc.showView()
             swifter.searchTweet(using: "\(label) exclude:retweets",lang: "en", count: 100 , tweetMode: .extended ,success: { (results, metadata) in
                 
                 var tweets=[TweetSentimentClassifierInput]()
@@ -36,11 +57,11 @@ class ViewController: UIViewController {
                         tweets.append(tweetForInput)
                     }
                 }
+                vc.hideView()
                 self.performSentiment(with: tweets)
             } ) { (error) in
                 print("Error Fetching Data from twitter API\(error)")
             }
-            
         }
         
     }
@@ -83,5 +104,13 @@ class ViewController: UIViewController {
         
     }
     
+}
+
+extension ViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        predictPressed(self)
+       textField.resignFirstResponder()
+       return true
+    }
 }
 

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,11 @@
 		C5961F5CCDF48F7B8C4A25A8 /* Pods_Twittermenti.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F8FBA29FE1FCA0A9B326A09 /* Pods_Twittermenti.framework */; };
 		D5B01737252FA33A00D19524 /* TweetSentimentClassifier.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = D5B01736252FA33A00D19524 /* TweetSentimentClassifier.mlmodel */; };
 		D5B0174D252FA36400D19524 /* SwifteriOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B01742252FA34700D19524 /* SwifteriOS.framework */; };
+		D5DC4ABD26BF2347008E6ABD /* LoaderViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D5DC4AB526BF2347008E6ABD /* LoaderViewController.xib */; };
+		D5DC4ABE26BF2347008E6ABD /* LoaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5DC4AB626BF2347008E6ABD /* LoaderViewController.swift */; };
+		D5DC4ABF26BF2347008E6ABD /* loaderAnimation.json in Resources */ = {isa = PBXBuildFile; fileRef = D5DC4AB726BF2347008E6ABD /* loaderAnimation.json */; };
+		D5DC4AC226BF23DB008E6ABD /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D5DC4AC126BF23DB008E6ABD /* IQKeyboardManagerSwift */; };
+		D5DC4AC526BF2409008E6ABD /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = D5DC4AC426BF2409008E6ABD /* Lottie */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +75,9 @@
 		BAE7544064C3E15B3011795C /* Pods-Twittermenti.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Twittermenti.release.xcconfig"; path = "Target Support Files/Pods-Twittermenti/Pods-Twittermenti.release.xcconfig"; sourceTree = "<group>"; };
 		D5B01736252FA33A00D19524 /* TweetSentimentClassifier.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = TweetSentimentClassifier.mlmodel; sourceTree = "<group>"; };
 		D5B01739252FA34700D19524 /* Swifter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Swifter.xcodeproj; path = ../../Swifter/Swifter.xcodeproj; sourceTree = "<group>"; };
+		D5DC4AB526BF2347008E6ABD /* LoaderViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoaderViewController.xib; sourceTree = "<group>"; };
+		D5DC4AB626BF2347008E6ABD /* LoaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoaderViewController.swift; sourceTree = "<group>"; };
+		D5DC4AB726BF2347008E6ABD /* loaderAnimation.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loaderAnimation.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +87,8 @@
 			files = (
 				D5B0174D252FA36400D19524 /* SwifteriOS.framework in Frameworks */,
 				C5961F5CCDF48F7B8C4A25A8 /* Pods_Twittermenti.framework in Frameworks */,
+				D5DC4AC226BF23DB008E6ABD /* IQKeyboardManagerSwift in Frameworks */,
+				D5DC4AC526BF2409008E6ABD /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -91,7 +101,6 @@
 				5FBAAC1173E295A104AB36D7 /* Pods-Twittermenti.debug.xcconfig */,
 				BAE7544064C3E15B3011795C /* Pods-Twittermenti.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -118,6 +127,7 @@
 		AD9EC64E20FE2EF4002AE9BF /* Twittermenti */ = {
 			isa = PBXGroup;
 			children = (
+				D5DC4AB426BF2347008E6ABD /* Loader */,
 				AD9EC64F20FE2EF4002AE9BF /* AppDelegate.swift */,
 				AD9EC65120FE2EF4002AE9BF /* ViewController.swift */,
 				AD9EC65320FE2EF4002AE9BF /* Main.storyboard */,
@@ -149,6 +159,16 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D5DC4AB426BF2347008E6ABD /* Loader */ = {
+			isa = PBXGroup;
+			children = (
+				D5DC4AB526BF2347008E6ABD /* LoaderViewController.xib */,
+				D5DC4AB626BF2347008E6ABD /* LoaderViewController.swift */,
+				D5DC4AB726BF2347008E6ABD /* loaderAnimation.json */,
+			);
+			path = Loader;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -167,6 +187,10 @@
 			dependencies = (
 			);
 			name = Twittermenti;
+			packageProductDependencies = (
+				D5DC4AC126BF23DB008E6ABD /* IQKeyboardManagerSwift */,
+				D5DC4AC426BF2409008E6ABD /* Lottie */,
+			);
 			productName = Twittermenti;
 			productReference = AD9EC64C20FE2EF4002AE9BF /* Twittermenti.app */;
 			productType = "com.apple.product-type.application";
@@ -196,6 +220,10 @@
 				Base,
 			);
 			mainGroup = AD9EC64320FE2EF4002AE9BF;
+			packageReferences = (
+				D5DC4AC026BF23DB008E6ABD /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
+				D5DC4AC326BF2409008E6ABD /* XCRemoteSwiftPackageReference "lottie-ios" */,
+			);
 			productRefGroup = AD9EC64D20FE2EF4002AE9BF /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -254,6 +282,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D5DC4ABD26BF2347008E6ABD /* LoaderViewController.xib in Resources */,
+				D5DC4ABF26BF2347008E6ABD /* loaderAnimation.json in Resources */,
 				AD9EC65A20FE2EF7002AE9BF /* LaunchScreen.storyboard in Resources */,
 				AD9EC65720FE2EF7002AE9BF /* Assets.xcassets in Resources */,
 				AD9EC66220FE319B002AE9BF /* README.md in Resources */,
@@ -313,6 +343,7 @@
 				D5B01737252FA33A00D19524 /* TweetSentimentClassifier.mlmodel in Sources */,
 				AD9EC65220FE2EF4002AE9BF /* ViewController.swift in Sources */,
 				AD9EC65020FE2EF4002AE9BF /* AppDelegate.swift in Sources */,
+				D5DC4ABE26BF2347008E6ABD /* LoaderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,6 +547,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D5DC4AC026BF23DB008E6ABD /* XCRemoteSwiftPackageReference "IQKeyboardManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardManager.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.5.6;
+			};
+		};
+		D5DC4AC326BF2409008E6ABD /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D5DC4AC126BF23DB008E6ABD /* IQKeyboardManagerSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5DC4AC026BF23DB008E6ABD /* XCRemoteSwiftPackageReference "IQKeyboardManager" */;
+			productName = IQKeyboardManagerSwift;
+		};
+		D5DC4AC426BF2409008E6ABD /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D5DC4AC326BF2409008E6ABD /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = AD9EC64420FE2EF4002AE9BF /* Project object */;
 }
