@@ -19,6 +19,7 @@ class ViewController: UIViewController {
     let sentimentClassifier=TweetSentimentClassifier()
     
     let swifter = Swifter(consumerKey: "PKxwEOVcLO89YkGUjWpzJR7ff", consumerSecret: "JZehglHEkRUQ8Kb7gDnoeoYhIyoiHpKJPols5ZqUM622JkFJ9T")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         sentimentLabel.font = UIFont.systemFont(ofSize: 20, weight: .thin)
@@ -36,10 +37,10 @@ class ViewController: UIViewController {
             sentimentLabel.text = ""
             sentimentLabel.font = UIFont.systemFont(ofSize: 100)
             fetchTweets()
-
+            
         }
     }
-    func fetchTweets(){
+    func fetchTweets() {
         
         if let label=textField.text{
             let vc = LoaderViewController()
@@ -66,39 +67,39 @@ class ViewController: UIViewController {
         
     }
     
-    func performSentiment(with tweets:[TweetSentimentClassifierInput]){
-        do{
+    func performSentiment(with tweets:[TweetSentimentClassifierInput]) {
+        do {
             var sentimentScore=0
             let prediction=try self.sentimentClassifier.predictions(inputs: tweets)
             for pred in prediction{
                 let sentiment=pred.label
                 if sentiment=="Pos"{
                     sentimentScore += 1
-                }else if sentiment=="Neg"{
+                } else if sentiment=="Neg" {
                     sentimentScore -= 1
                 }
             }
             updateUI(with: sentimentScore)
             
-        }catch{
+        } catch {
             print("Error Analysing Tweets,\(error)")
         }
         
     }
-    func updateUI(with sentimentScore:Int){
-        if sentimentScore>20{
+    func updateUI(with sentimentScore:Int) {
+        if sentimentScore>20 {
             sentimentLabel.text="😍"
-        }else if sentimentScore>10{
+        } else if sentimentScore>10 {
             sentimentLabel.text="😄"
-        }else if sentimentScore>0{
+        } else if sentimentScore>0 {
             sentimentLabel.text="🙂"
-        }else if sentimentScore == 0{
+        } else if sentimentScore == 0 {
             sentimentLabel.text="🤨"
-        }else if sentimentScore > -10{
+        } else if sentimentScore > -10 {
             sentimentLabel.text="🥺"
-        }else if sentimentScore > -20{
+        } else if sentimentScore > -20 {
             sentimentLabel.text="😢"
-        }else{
+        } else {
             sentimentLabel.text="😭"
         }
         
@@ -109,8 +110,8 @@ class ViewController: UIViewController {
 extension ViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         predictPressed(self)
-       textField.resignFirstResponder()
-       return true
+        textField.resignFirstResponder()
+        return true
     }
 }
 
