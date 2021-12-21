@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     }
     func fetchTweets() {
         
-        if let label=textField.text{
+        if let label = textField.text{
             let vc = LoaderViewController()
             guard let loaderView = vc.view else{
                 fatalError("Unable to Fetch View")
@@ -51,7 +51,7 @@ class ViewController: UIViewController {
             vc.showView()
             swifter.searchTweet(using: "\(label) exclude:retweets",lang: "en", count: 100 , tweetMode: .extended ,success: { (results, metadata) in
                 
-                var tweets=[TweetSentimentClassifierInput]()
+                var tweets = [TweetSentimentClassifierInput]()
                 for i in 0..<100 {
                     if let tweet = results[i]["full_text"].string{
                         let tweetForInput=TweetSentimentClassifierInput(text: tweet)
@@ -69,13 +69,13 @@ class ViewController: UIViewController {
     
     func performSentiment(with tweets:[TweetSentimentClassifierInput]) {
         do {
-            var sentimentScore=0
-            let prediction=try self.sentimentClassifier.predictions(inputs: tweets)
-            for pred in prediction{
+            var sentimentScore = 0
+            let prediction = try self.sentimentClassifier.predictions(inputs: tweets)
+            for pred in prediction {
                 let sentiment=pred.label
-                if sentiment=="Pos"{
+                if sentiment == "Pos"{
                     sentimentScore += 1
-                } else if sentiment=="Neg" {
+                } else if sentiment == "Neg" {
                     sentimentScore -= 1
                 }
             }
@@ -88,23 +88,21 @@ class ViewController: UIViewController {
     }
     func updateUI(with sentimentScore:Int) {
         if sentimentScore>20 {
-            sentimentLabel.text="😍"
+            sentimentLabel.text = "😍"
         } else if sentimentScore>10 {
-            sentimentLabel.text="😄"
+            sentimentLabel.text = "😄"
         } else if sentimentScore>0 {
-            sentimentLabel.text="🙂"
+            sentimentLabel.text = "🙂"
         } else if sentimentScore == 0 {
-            sentimentLabel.text="🤨"
+            sentimentLabel.text = "🤨"
         } else if sentimentScore > -10 {
-            sentimentLabel.text="🥺"
+            sentimentLabel.text = "🥺"
         } else if sentimentScore > -20 {
-            sentimentLabel.text="😢"
+            sentimentLabel.text = "😢"
         } else {
-            sentimentLabel.text="😭"
+            sentimentLabel.text = "😭"
         }
-        
     }
-    
 }
 
 extension ViewController: UITextFieldDelegate{

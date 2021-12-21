@@ -11,15 +11,17 @@ import Lottie
 class LoaderViewController: UIViewController {
 
     @IBOutlet weak var loaderView: AnimationView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
      func showView() {
         loaderView.loopMode = .loop
         loaderView.play()
     }
     
-    func hideView(){
+    func hideView() {
         self.view.removeFromSuperview()
         loaderView.stop()
         loaderView.isHidden = true
